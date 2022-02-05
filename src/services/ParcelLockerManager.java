@@ -88,14 +88,15 @@ public class ParcelLockerManager {
     public static void removePackageFromParcelLocker(UUID id) {
         // UUID uuid = UUID.fromString(id);
         for (int i = 0; i < parcels.length; i++) {
-            for (int j = 0; j < parcels[i].getPackages().length; j++) {
-                if (parcels[i] != null && parcels[i].getPackages()[j] != null && parcels[i].getPackages()[j].getId().equals(id)) {
-                    parcels[i].getPackages()[j] = null;
+            if (parcels[i] != null) {
+                for (int j = 0; j < parcels[i].getPackages().length; j++) {
+                    if (parcels[i].getPackages()[j] != null && parcels[i].getPackages()[j].getId().equals(id)) {
+                        parcels[i].getPackages()[j] = null;
+                    }
                 }
             }
         }
     }
-
 
     //8.Metoda do wyświetlani wszystkich paczek; po paczkoamacie;
     public static void displayAllPackagesByParcel(UUID id) {
