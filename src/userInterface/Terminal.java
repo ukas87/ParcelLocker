@@ -19,6 +19,7 @@ public class Terminal {
     static PackageManager packageManager = new PackageManager();
 
     public static void main(String[] args) {
+
         init();
 
     }
@@ -79,7 +80,7 @@ public class Terminal {
                         "[5]. Update Parcel Locker\n" +
                         "[6]. Add Package\n" +
                         "[7]. Remove Package\n" +
-                        "[8]. Display Package By Parcel Locker\n" +
+                        "[8]. Display Packages By Parcel Locker\n" +
                         "[9]. Update Package\n" +
                         "[0]. Exit program");
     }
@@ -171,10 +172,11 @@ public class Terminal {
         System.out.println("Who is sender of the package: Name: ");
         String senderName = sc1.nextLine();
         System.out.println("The Sender Parcel Locker name is: ");
-        String senderParcelLocker = String.valueOf(sc1.nextLine());
+        String senderParcelLocker = sc1.nextLine();
         System.out.println("The recipient Parcel Locker name is: ");
-        String recipientParcelLocker = String.valueOf(sc1.nextLine());
+        String recipientParcelLocker = sc1.nextLine();
         ParcelLockerManager.addPackageToParcelLocker(name, size, weight, recipientName, senderName, senderParcelLocker, recipientParcelLocker);
+        System.out.println("Package " + name + " added");
     }
 
     private static void displayPackages() {
@@ -185,7 +187,7 @@ public class Terminal {
     }
 
     private static void updatePackagesInParcelLocker() {
-
+        ///DD
     }
 }
 

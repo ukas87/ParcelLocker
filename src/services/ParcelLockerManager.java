@@ -66,6 +66,24 @@ public class ParcelLockerManager {
 
     }
 
+
+    //6, Metoda do Dodawania paczek; nie działa wywala mi się //
+    public static void addPackageToParcelLocker(String name, Package.Size size, double weight, String recipient, String sender, String senderPL, String recipientPL) {
+        for (int i = 0; i < parcels.length; i++) {
+            if (parcels[i] != null && parcels[i].getName().equals(senderPL)) {
+                for (int j = 0; j < parcels[i].getPackages().length; j++) {
+                    if (parcels[i].getPackages()[j] == null) {
+                        parcels[i].getPackages()[j] = new Package(name, size, weight, recipient, sender, senderPL, recipientPL);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    //6b
+
+
     //7.usuawni paczek z paczkomatu;
     public static void removePackageFromParcelLocker(UUID id) {
         // UUID uuid = UUID.fromString(id);
@@ -78,29 +96,26 @@ public class ParcelLockerManager {
         }
     }
 
-    //6, Metoda do Dodawania paczek;
-    public static void addPackageToParcelLocker(String name, Package.Size size, double weight, String recipient, String sender, String senderPL, String recipientPL) {
+
+    //8.Metoda do wyświetlani wszystkich paczek; po paczkoamacie;
+    public static void displayAllPackagesByParcel(UUID id) {
         for (int i = 0; i < parcels.length; i++) {
-            for (int j = 0; j < parcels[i].getPackages().length; j++) {
-                if (packages[i] == null) {
-                    packages[i] = new Package(name, size, weight, recipient, sender, senderPL, recipientPL);
-                }
-            }
-        }
-    }
-//8.Metoda do wyświetlani wszystkich paczek; po paczkoamacie;
-    public static void displayAllPackagesByParcel(UUID id){
-        for(int i = 0; i < parcels.length; i++){
-            if(parcels[i] != null && parcels[i].getId().equals(id)) {
-                for (int j = 0; j < parcels[i].getPackages().length; j++){
+            if (parcels[i] != null && parcels[i].getId().equals(id)) {
+                for (int j = 0; j < parcels[i].getPackages().length; j++) {
                     System.out.println(parcels[i].getPackages()[j]);
                 }
             }
         }
     }
-////9;Metoda do aktualizaji;
-//    public static void updatedPackageInParcelLocker(){
-//        System.out.println("Give id of Package");
+
+//    //8.Metoda do wyświetlani wszystkich paczek; po paczkoamacie;
+//    public static void addPackageToParcel(String name, Package.Size size, double weight, String recipient, String sender, String senderPL, String recipientPL) {
+//        for (int i = 0; i < parcels.length; i++) {
+//            if (parcels[i] != null && parcels[i].getName().equals(z)) {
+//                for (int j = 0; j < parcels[i].getPackages().length; j++) {
+//                    System.out.println(parcels[i].getPackages()[j]);
+//                }
+//            }
+//        }
 //    }
-//
 }
