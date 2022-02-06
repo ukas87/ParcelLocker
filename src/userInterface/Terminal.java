@@ -180,7 +180,7 @@ public class Terminal {
         System.out.println("The recipient Parcel Locker name is: ");
         String recipientParcelLocker = sc1.nextLine();
         validRecipientParcelLocker(recipientParcelLocker); //!!!!!!!!!!!
-        System.out.println("Add the state: W, T, R  ");
+        System.out.println("Add the state: START, RECEIVED ");
         Package.State state = Package.State.valueOf(sc1.nextLine());
         ///jak walidować stan!!???SSA
         ParcelLockerManager.addPackageToParcelLocker(name, size, weight, recipientName, senderName, senderParcelLocker, recipientParcelLocker, state);
@@ -213,10 +213,8 @@ public class Terminal {
         validName(name);
         System.out.println("Whats size is new package(S, M, L, XL) ");
         Package.Size size = Package.Size.valueOf(sc.nextLine());
-        ////
-        System.out.println("What is weight of new package, in kgs: ");
+        System.out.println("What is weight of new package, in kgs: (0,0)");
         double weight = sc.nextDouble();
-        ////
         System.out.println("Who is recipient of the package");
         String recipient = sc1.nextLine();
         validRecipientName(recipient);
@@ -226,20 +224,20 @@ public class Terminal {
         System.out.println("The Sender Parcel Locker name is: ");
         String senderParcelLocker = sc1.nextLine();
         validSenderParcelLocker(senderParcelLocker);
-        //tu czy istniejej?!??!?!?
+        //tu muszę jeszcz pomyśleć nad weryfikacją
         System.out.println("The recipient Parcel Locker name is: ");
         String recipientParcelLocker = sc1.nextLine();
         validRecipientParcelLocker(recipientParcelLocker);
-        ///// tu trzeba saprawdzic raczej jej istnienie!??
-        System.out.println("Add the state: W, T, R  ");
+        //tu podobnie
+        System.out.println("Add the state: START, RECEIVED  ");
         Package.State state = Package.State.valueOf(sc1.nextLine());
         ParcelLockerManager.updatePackagesInParcelLocker(id, name, size, weight, recipient, sender, senderParcelLocker, recipientParcelLocker, state);
     }
 
 //VAlidUUID;
     private static void validUUID(UUID id) {
-        if(Validation.isValidUUIDNumber(String.valueOf(id))) {
-            System.out.println(" Wrong data format. The pacrcel" + String.valueOf(id) + "dosen't exist");
+        if(!Validation.isValidUUIDNumber(String.valueOf(id))) {
+            System.out.println(" Wrong data format, or The parcel " + id + " doesn't exist");
             System.out.println("You need to start method again                                        ");
             System.out.println("                                                                      ");
             Terminal.start();
@@ -350,6 +348,9 @@ public class Terminal {
             Terminal.start();
         }
     }
+
+
+
 }
 
 

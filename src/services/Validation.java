@@ -10,7 +10,6 @@ public class Validation {
 
     //static Scanner sc = new Scanner(System.in);
 
-
     public static boolean isNotEmptyValidation(String input) {
         return input.isEmpty();
     }
@@ -38,8 +37,7 @@ public class Validation {
         return m.find();
 
     }
-//    public static boolean isThatProperSize(String size){
-//        return false;
-//    }
+
+
 }
 
