@@ -11,7 +11,7 @@ public class Package {
     private String sender;
     private String senderPL;
     private String recipientPL;
-    private State state = State.WAITING;
+    private State state = State.W; //waiting to muszę opisać //
 
 
 
@@ -23,6 +23,17 @@ public class Package {
         this.sender = sender;
         this.senderPL = senderPL;
         this.recipientPL = recipientPL;
+    }
+
+    public Package(String name, Size size, double weight, String recipient, String sender, String senderPL, String recipientPL, State state) {
+        this.name = name;
+        this.size = size;
+        this.weight = weight;
+        this.recipient = recipient;
+        this.sender = sender;
+        this.senderPL = senderPL;
+        this.recipientPL = recipientPL;
+        this.state = state;
     }
 
 
@@ -120,7 +131,9 @@ public class Package {
     }
 
     public enum State{
-         WAITING,IN_TRANSPORT, RECEIVED
+        W,T,R
+
+         //WAITING,IN_TRANSPORT, RECEIVED
         //WAITING,IN_TRANSPORT,ARRIVED,RECEIVED
     }
 

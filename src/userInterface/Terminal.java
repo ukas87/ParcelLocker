@@ -57,7 +57,7 @@ public class Terminal {
                     displayPackages();
                     break;
                 case 9:
-                    //updatePackage();
+                    updatePackage();
                     break;
                 case 0:
                     System.out.println("Exiting program. Thank You!");
@@ -175,7 +175,9 @@ public class Terminal {
         String senderParcelLocker = sc1.nextLine();
         System.out.println("The recipient Parcel Locker name is: ");
         String recipientParcelLocker = sc1.nextLine();
-        ParcelLockerManager.addPackageToParcelLocker(name, size, weight, recipientName, senderName, senderParcelLocker, recipientParcelLocker);
+        System.out.println("Add the state: W, T, R  ");
+        Package.State state = Package.State.valueOf(sc1.nextLine());
+        ParcelLockerManager.addPackageToParcelLocker(name, size, weight, recipientName, senderName, senderParcelLocker, recipientParcelLocker, state);
         System.out.println("Package " + name + " added");
     }
 
@@ -186,8 +188,28 @@ public class Terminal {
         displayAllPackagesByParcel(id);
     }
 
-    private static void updatePackagesInParcelLocker() {
-        ///DD
+    private static void updatePackage() {
+        System.out.println("U chose to update Package");
+        System.out.println("Which Package would You like to update");
+        System.out.println("Package Id: ");
+        UUID id = UUID.fromString(sc.nextLine());
+        System.out.println("New name will be ");
+        String name = sc.nextLine();
+        System.out.println("Whats size is new package(S, M, L, XL) ");
+        Package.Size size = Package.Size.valueOf(sc.nextLine());
+        System.out.println("What is weight of new package, in kgs: ");
+        double weight = sc.nextDouble();
+        System.out.println("Who is recipient of the package");
+        String recipient = sc1.nextLine();
+        System.out.println("Who is sender of the package: ");
+        String sender= sc1.nextLine();
+//        System.out.println("The Sender Parcel Locker name is: ");
+//        String senderParcelLocker = sc1.nextLine();
+//        System.out.println("The recipient Parcel Locker name is: ");
+//        String recipientParcelLocker = sc1.nextLine();
+//        System.out.println("Add the state: W, T, R  ");
+//        Package.State state = Package.State.valueOf(sc1.nextLine());
+        ParcelLockerManager.updatePackagesInParcelLocker(id, name, size, weight, recipient, sender);
     }
 }
 

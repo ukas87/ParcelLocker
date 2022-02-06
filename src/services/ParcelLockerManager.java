@@ -68,12 +68,12 @@ public class ParcelLockerManager {
 
 
     //6, Metoda do Dodawania paczek; nie działa wywala mi się //
-    public static void addPackageToParcelLocker(String name, Package.Size size, double weight, String recipient, String sender, String senderPL, String recipientPL) {
+    public static void addPackageToParcelLocker(String name, Package.Size size, double weight, String recipient, String sender, String senderPL, String recipientPL, Package.State state) {
         for (int i = 0; i < parcels.length; i++) {
             if (parcels[i] != null && parcels[i].getName().equals(senderPL)) {
                 for (int j = 0; j < parcels[i].getPackages().length; j++) {
                     if (parcels[i].getPackages()[j] == null) {
-                        parcels[i].getPackages()[j] = new Package(name, size, weight, recipient, sender, senderPL, recipientPL);
+                        parcels[i].getPackages()[j] = new Package(name, size, weight, recipient, sender, senderPL, recipientPL, state);
                     }
                     break;
                 }
@@ -108,15 +108,23 @@ public class ParcelLockerManager {
             }
         }
     }
+    //9.Metoda do Updetowwania
 
-//    //8.Metoda do wyświetlani wszystkich paczek; po paczkoamacie;
-//    public static void addPackageToParcel(String name, Package.Size size, double weight, String recipient, String sender, String senderPL, String recipientPL) {
-//        for (int i = 0; i < parcels.length; i++) {
-//            if (parcels[i] != null && parcels[i].getName().equals(z)) {
-//                for (int j = 0; j < parcels[i].getPackages().length; j++) {
-//                    System.out.println(parcels[i].getPackages()[j]);
-//                }
-//            }
-//        }
-//    }
+    public static void updatePackagesInParcelLocker(UUID id, String name, Package.Size size, double weight, String recipient, String sender) {
+        for (int i = 0; i < parcels.length; i++) {
+            if (parcels[i] != null ) {
+                for(int j = 0; j < parcels[i].getPackages().length; j++){
+                    if(parcels[i].getPackages()[j] != null && parcels[i].getPackages()[j].getId().equals(id)) {
+                        parcels[i].getPackages()[j].setName(name);
+                        parcels[i].getPackages()[j].setSize(size);
+                        parcels[i].getPackages()[j].setWeight(weight);
+                        parcels[i].getPackages()[j].setRecipient(recipient);
+                        parcels[i].getPackages()[j].setSender(sender);
+                       // parcels[i].getPackages()[j].setState(state);
+                    }
+                }
+            }
+        }
+
+    }
 }
