@@ -8,7 +8,7 @@ public class ParcelLocker {
    // private String id = UUID.randomUUID().toString();
     private String name;
     private Address address;
-    private Package[] packages = new Package[5];
+    private Package[] packages = new Package [5];
 
 
     public ParcelLocker(UUID id, String name, Address address, Package[] packages) {

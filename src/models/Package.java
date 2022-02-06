@@ -3,6 +3,7 @@ package models;
 import java.util.UUID;
 
 public class Package {
+
     private UUID id = UUID.randomUUID();
     private String name;
     private Size size;
@@ -11,8 +12,7 @@ public class Package {
     private String sender;
     private String senderPL;
     private String recipientPL;
-    private State state = State.W; //waiting to muszę opisać //
-
+    private State state = State.START;
 
 
     public Package(String name, Size size, double weight, String recipient, String sender, String senderPL, String recipientPL) {
@@ -131,10 +131,9 @@ public class Package {
     }
 
     public enum State{
-        W,T,R
+        START, DELIVERED;
 
-         //WAITING,IN_TRANSPORT, RECEIVED
-        //WAITING,IN_TRANSPORT,ARRIVED,RECEIVED
+      //jak dla mnie na tym etapie potrzeba dwóch stanów, w paczkomacie Starowym, lub Docelowym;
     }
 
     public void setRecipientParcelLocker(String recipientParcelLocker) {
